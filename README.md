@@ -1,4 +1,4 @@
-## App Component
+## Notes App using React and Firebase
 
 ### State
 - `notes`: Holds an array of notes fetched from Firebase.
