@@ -1,23 +1,37 @@
-# co3224f249bca482bd4d12690
+## App Component
 
-Warning: Vite enforces using jsx syntax inside jsx/tsx files, so it will complain about that. Solution: rename `.js` files to `.jsx` :)
+### State
+- `notes`: Holds an array of notes fetched from Firebase.
+- `currentNoteId`: Keeps track of the ID of the currently selected note.
+- `tempNoteText`: Stores the temporary text of the current note being edited.
 
-Quick start:
+### Fetching Data
+- `useEffect` with `onSnapshot`: Listens for changes in the `notesCollection` in Firebase and updates the `notes` state accordingly.
 
-```
-$ npm install
-$ npm start
-````
+### Functionality
+- Sets the `currentNoteId` to the first note's ID when the `notes` array updates.
+- Updates `tempNoteText` whenever the `currentNote` changes.
 
-Head over to https://vitejs.dev/ to learn more about using vite
-## About Scrimba
+### Functions
+- `createNewNote`: Creates a new note in the Firebase collection, sets it as the current note.
+- `updateNote`: Updates the text and `updatedAt` timestamp of the current note in Firebase.
+- `deleteNote`: Deletes the specified note from Firebase.
 
-At Scrimba our goal is to create the best possible coding school at the cost of a gym membership! 💜
-If we succeed with this, it will give anyone who wants to become a software developer a realistic shot at succeeding, regardless of where they live and the size of their wallets 🎉
-The Frontend Developer Career Path aims to teach you everything you need to become a Junior Developer, or you could take a deep-dive with one of our advanced courses 🚀
+### Rendering
+- Displays a split view with a Sidebar and an Editor.
+- Sidebar contains a list of notes, allowing selection, creation, and deletion of notes.
+- Editor displays the content of the currently selected note for editing.
 
-- [Our courses](https://scrimba.com/allcourses)
-- [The Frontend Career Path](https://scrimba.com/learn/frontend)
-- [Become a Scrimba Pro member](https://scrimba.com/pricing)
+### Conditional Rendering
+- Checks if there are any notes; if not, it displays a message prompting the user to create a note.
 
-Happy Coding!
+### Components Used
+- `Sidebar`: Manages the list of notes and interactions related to notes.
+- `Editor`: Allows editing of the content of the currently selected note.
+
+### Libraries Used
+- `React`: Framework for building user interfaces.
+- `Firebase`: Interacts with Firebase Firestore for data storage.
+
+## Overall Functionality
+The App component handles note creation, deletion, and editing functionalities. It fetches notes from Firebase, displays them in a sidebar, and allows editing in a split-view editor. Updates to notes trigger real-time changes in the application.
