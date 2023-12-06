@@ -2,7 +2,6 @@ import React from "react"
 import Sidebar from "./components/Sidebar"
 import Editor from "./components/Editor"
 import Split from "react-split"
-import { nanoid } from "nanoid"
 import {
     onSnapshot,
     addDoc,
@@ -51,7 +50,7 @@ export default function App() {
             if (tempNoteText !== currentNote.body) {
                 updateNote(tempNoteText)
             }
-        }, 200)
+        }, 500)
         return () => clearTimeout(timeoutId)
     }, [tempNoteText])
 

@@ -11,17 +11,20 @@ export default function Editor({ tempNoteText, setTempNoteText }) {
         strikethrough: true,
         tasklists: true,
     })
+    
+    const generateMarkdownPreview = (markdown) => {
+        return Promise.resolve(converter.makeHtml(markdown));
+    };
 
     return (
         <section className="pane editor">
             <ReactMde
+                className="editor--mde"
                 value={tempNoteText}
                 onChange={setTempNoteText}
                 selectedTab={selectedTab}
                 onTabChange={setSelectedTab}
-                generateMarkdownPreview={(markdown) =>
-                    Promise.resolve(converter.makeHtml(markdown))
-                }
+                generateMarkdownPreview= {generateMarkdownPreview}
                 minEditorHeight={80}
                 heightUnits="vh"
             />
